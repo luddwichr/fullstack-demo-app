@@ -1,0 +1,16 @@
+<h2>Daily News - Demonstrate Frontend-Backend Communication</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Message</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let newsMessage of dailyNews">
+            <td>{{newsMessage.title}}</td>
+            <td>{{newsMessage.message}}</td>
+        </tr>
+    </tbody>
+</table>

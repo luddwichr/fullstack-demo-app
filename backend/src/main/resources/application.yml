@@ -1,0 +1,24 @@
+logging:
+  level:
+    org.springframework.web.filter.CommonsRequestLoggingFilter: DEBUG
+spring:
+  application.name: demo-backend
+  datasource:
+    url: jdbc:postgresql://localhost:5432/demo-database
+    username: demo-admin
+    password: supersafe
+    hikari:
+      connectionTimeout: 5000
+      maximumPoolSize: 10
+      auto-commit: false
+  jpa:
+    # https://vladmihalcea.com/the-open-session-in-view-anti-pattern/
+    open-in-view: false
+    properties:
+      javax.persistence.query.timeout: 2000
+      hibernate:
+        # https://vladmihalcea.com/why-you-should-always-use-hibernate-connection-provider_disables_autocommit-for-resource-local-jpa-transactions/
+        connection.provider_disables_autocommit: true
+        jdbc.time_zone: UTC
+    hibernate:
+      ddl-auto: validate

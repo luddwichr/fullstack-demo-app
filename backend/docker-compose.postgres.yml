@@ -1,0 +1,11 @@
+version: '3'
+services:
+  db:
+    image: 'postgres:13-alpine'
+    container_name: demo-db
+    environment:
+      - POSTGRES_DB=demo-database
+      - POSTGRES_USER=demo-admin
+      - POSTGRES_PASSWORD=supersafe
+    ports:
+    - 5432:5432
