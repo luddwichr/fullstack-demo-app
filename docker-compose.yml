@@ -10,7 +10,8 @@ services:
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=supersafe
     depends_on:
-      - db
+      - db:
+        condition: service_healthy
   frontend:
     container_name: demo-frontend
     build: ./frontend
@@ -25,6 +26,11 @@ services:
     container_name: demo-db
     networks:
         - backend_net
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
     environment:
       - POSTGRES_DB=demo-database
       - POSTGRES_USER=postgres
