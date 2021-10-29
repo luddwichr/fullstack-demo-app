@@ -11,7 +11,7 @@ export class DailyNewsService {
   constructor(private readonly http: HttpClient) {
   }
 
-  getDailyNews(): Observable<DailyNewsMessage[]> {
+  fetchDailyNews(): Observable<DailyNewsMessage[]> {
     return this.http.get<DailyNewsMessage[]>("/api/daily-news");
   }
   

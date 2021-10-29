@@ -23,6 +23,13 @@ public class DailyNewsMessageEntity {
         this.message = message;
     }
 
+    // for testing only!
+    DailyNewsMessageEntity(Long id, String title, String message) {
+        this.id = id;
+        this.title = title;
+        this.message = message;
+    }
+
     public String getTitle() {
         return title;
     }

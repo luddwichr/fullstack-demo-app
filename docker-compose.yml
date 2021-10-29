@@ -1,18 +1,16 @@
-version: '3'
 services:
   backend:
     container_name: demo-backend
     build: ./backend
-    # remove comments below to make demo-backend callable from host...
-    #ports:
-    #  - 8080:8080
     networks:
       - frontend_net
       - backend_net
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://demo-db:5432/demo-database
-      - SPRING_DATASOURCE_USERNAME=demo-admin
+      - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=supersafe
+    depends_on:
+      - db
   frontend:
     container_name: demo-frontend
     build: ./frontend
@@ -20,6 +18,8 @@ services:
       frontend_net:
     ports:
       - 4200:80
+    depends_on:
+      - backend
   db:
     image: 'postgres:13-alpine'
     container_name: demo-db
@@ -27,7 +27,7 @@ services:
         - backend_net
     environment:
       - POSTGRES_DB=demo-database
-      - POSTGRES_USER=demo-admin
+      - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=supersafe
 networks:
   frontend_net:

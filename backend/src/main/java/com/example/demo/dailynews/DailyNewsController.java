@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/api/daily-news")
+@RequestMapping("/daily-news")
 class DailyNewsController {
 
     private final DailyNewsService dailyNewsService;

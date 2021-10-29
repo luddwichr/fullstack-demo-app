@@ -1,25 +1,25 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { createComponentFactory, mockProvider, byText } from '@ngneat/spectator';
+import { of } from 'rxjs';
 
 import { DailyNewsComponent } from './daily-news.component';
+import { DailyNewsService } from './daily-news.service';
 
 describe('DailyNewsComponent', () => {
-  let component: DailyNewsComponent;
-  let fixture: ComponentFixture<DailyNewsComponent>;
-
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ DailyNewsComponent ]
-    })
-    .compileComponents();
+  const createComponent = createComponentFactory({
+    component: DailyNewsComponent,
+    providers: [mockProvider(DailyNewsService)]
   });
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(DailyNewsComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+  it('displays fetched daily news', () => {
+    const spectator = createComponent({detectChanges: false});
+    const dailyNews = [{title: 'titleA', message: 'messageA'}, {title: 'titleB', message: 'messageB'}];
+    spectator.inject(DailyNewsService).fetchDailyNews.and.returnValue(of(dailyNews));
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+    spectator.detectChanges();
+
+    for(const entry of dailyNews) {
+      expect(spectator.query(byText(entry.title))).toExist();
+      expect(spectator.query(byText(entry.message))).toExist();
+    }
   });
 });
