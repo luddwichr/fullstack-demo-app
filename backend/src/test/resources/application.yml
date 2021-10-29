@@ -6,6 +6,4 @@ spring:
   # time (depending on spring.datasource.hikari.connectionTimeout). As long as a context is cached, its connection pool
   # and hence connections managed by the pool aren't released.
   # To stabilize tests, only use a single connection per test context.
-  datasource.hikari:
-    connectionTimeout: 10000
-    maximumPoolSize: 1
+  datasource.hikari.maximumPoolSize: 1

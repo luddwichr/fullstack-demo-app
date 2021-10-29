@@ -15,11 +15,11 @@ jobs:
           distribution: 'adopt'
           cache: maven
       - name: Compile
-        run: ./mvnw compile
+        run: ./mvnw compile -B
       - name: Test
-        run: ./mvnw test
+        run: ./mvnw test -B
       - name: Package
-        run: ./mvnw package -DskipTests
+        run: ./mvnw package -B -DskipTests
   build-frontend:
     runs-on: ubuntu-latest
     defaults:
