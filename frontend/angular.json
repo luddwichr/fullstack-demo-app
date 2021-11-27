@@ -4,7 +4,7 @@
   "cli": {
     "cache": {
       "enabled": true,
-      "path": ".cache",
+      "path": "./.angular/cache",
       "environment": "all"
     }
   },
