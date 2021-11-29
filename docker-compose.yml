@@ -9,18 +9,17 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://demo-db:5432/demo-database
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=supersafe
-    depends_on:
-      - db:
-        condition: service_healthy
   frontend:
     container_name: demo-frontend
     build: ./frontend
     networks:
       frontend_net:
     ports:
-      - 4200:80
+      - 433:433
     depends_on:
       - backend
+    volumes:
+      - ./frontend/sll/:/etc/nginx/certs/
   db:
     image: 'postgres:13-alpine'
     container_name: demo-db

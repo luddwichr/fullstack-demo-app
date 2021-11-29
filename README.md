@@ -26,8 +26,17 @@ See [Dockerfile](frontend/Dockerfile) and [nginx.conf](frontend/nginx.conf) for 
 For development, the webpack dev server ist configured to proxy requests to `http://localhost:8080`.
 See [here](https://angular.io/guide/build#proxying-to-a-backend-server) for more.
 
+## HTTPS
+
+To prevent man-in-the-middle attacks and sniffing of plain-text network traffic, SSL is configured in this demo application.
+The following resources are helpful to understand how HTTPS can be configured:
+- https://www.baeldung.com/openssl-self-signed-cert
+- https://medium.com/@rubenvermeulen/running-angular-cli-over-https-with-a-trusted-certificate-4a0d5f92747a
+- https://nginx.org/en/docs/http/configuring_https_servers.html
+
+Run `./create-self-signed-certificate.sh ` to create a self signed certificate for use in a non-production environment.
+
 ## Room for improvement
 
 - Dockerize Spring Boot not as minimalistic as currently done (e.g. read [this guide](https://reflectoring.io/spring-boot-docker/))
 - Give [this](https://snyk.io/blog/best-practices-to-build-java-containers-with-docker/) a read
-- add HTTPS
