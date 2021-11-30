@@ -21,7 +21,7 @@ export class DailyNewsComponent implements OnInit {
   retrieveDailyNews(): void {
     this.dailyNewsService
       .fetchDailyNews()
-      .subscribe(dailyNews => this.dailyNews = dailyNews, globalExceptionHandler);
+      .subscribe({next: dailyNews => this.dailyNews = dailyNews, error: globalExceptionHandler});
   }
 
 }
