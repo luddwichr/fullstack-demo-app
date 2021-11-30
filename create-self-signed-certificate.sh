@@ -1,1 +1,1 @@
-openssl req -newkey rsa:2048 -keyout frontend/ssl/cert.key -x509 -days 365 -out frontend/ssl/cert.crt
+openssl req -nodes -batch -newkey rsa:4096 -keyout frontend/ssl/cert.key -x509 -days 365 -out frontend/ssl/cert.crt

@@ -15,11 +15,11 @@ services:
     networks:
       frontend_net:
     ports:
-      - 433:433
+      - 443:443
     depends_on:
       - backend
     volumes:
-      - ./frontend/sll/:/etc/nginx/certs/
+      - ./frontend/ssl/:/etc/nginx/certs/
   db:
     image: 'postgres:13-alpine'
     container_name: demo-db
