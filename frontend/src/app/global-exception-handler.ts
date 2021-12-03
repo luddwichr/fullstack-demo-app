@@ -1,3 +1,5 @@
-export function globalExceptionHandler(error: Error) {
-    console.error('An unexpected error occurred', error);
+export class GlobalExceptionHandler {
+    static handleException(error: Error) {
+        console.error('An unexpected error occurred', error);
+    }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { globalExceptionHandler } from '../global-exception-handler';
+import { GlobalExceptionHandler } from '../global-exception-handler';
 import { DailyNewsMessage } from './daily-news-message';
 import { DailyNewsService } from './daily-news.service';
 
@@ -21,7 +21,7 @@ export class DailyNewsComponent implements OnInit {
   retrieveDailyNews(): void {
     this.dailyNewsService
       .fetchDailyNews()
-      .subscribe({next: dailyNews => this.dailyNews = dailyNews, error: globalExceptionHandler});
+      .subscribe({next: dailyNews => this.dailyNews = dailyNews, error: GlobalExceptionHandler.handleException});
   }
 
 }
