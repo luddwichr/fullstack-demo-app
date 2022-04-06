@@ -8,11 +8,15 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 public class DailyNewsControllerSystemTest extends SystemTest {
-
     @Test
     void getDailyNews() throws Exception {
-        mockMvc.perform(get("/daily-news"))
+        mockMvc.perform(get("/daily-news").with(testerUser()))
                 .andExpect(status().isOk())
                 .andExpect(jsonContent().matchesFile("responses/daily-news.json"));
+    }
+
+    @Test
+    void missingAuthentication() throws Exception {
+        mockMvc.perform(get("/daily-news")).andExpect(status().isForbidden());
     }
 }

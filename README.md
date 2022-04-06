@@ -36,6 +36,18 @@ The following resources are helpful to understand how HTTPS can be configured:
 
 Run `./create-self-signed-certificate.sh ` to create a self signed certificate for use in a non-production environment.
 
+## Authentication / Authorization
+
+To control access to sensitive resources, authentication and authorization is required.
+In this demo, authentication and authorization using via user credentials stored in a database. 
+The implementation strongly relies on features provided by Spring Security.
+
+The following resources are helpful to understand how authentication can be configured:
+- https://reflectoring.io/spring-security-password-handling/
+- https://spring.io/guides/tutorials/spring-security-and-angular-js/
+
+TODO: so far, I only implemented the backend part - the frontend part is currently missing and breaking the app
+
 ## Room for improvement
 
 - Dockerize Spring Boot not as minimalistic as currently done (e.g. read [this guide](https://reflectoring.io/spring-boot-docker/))
