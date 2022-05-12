@@ -1,9 +1,7 @@
 package com.example.demo.dailynews;
 
-import org.springframework.data.repository.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
+interface DailyNewsRepository extends JpaRepository<DailyNewsMessageEntity, Long> {
 
-interface DailyNewsRepository extends Repository<DailyNewsMessageEntity, Long> {
-    List<DailyNewsMessageEntity> findAll();
 }

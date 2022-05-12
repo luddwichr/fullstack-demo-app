@@ -37,4 +37,8 @@ public class DailyNewsMessageEntity {
     public String getMessage() {
         return message;
     }
+
+    public Long getId() {
+        return id;
+    }
 }
